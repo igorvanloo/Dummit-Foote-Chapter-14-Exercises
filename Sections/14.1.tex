@@ -1,0 +1,131 @@
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Show that if the field $K$ is generated over $F$ by the elements $a_1, \cdots, a_n$ then an automorphism $\sigma$ of $K$ fixing $F$ is uniquely determined by $\sigma(a_1), \cdots, \sigma(a_n)$. In particular, show that an automorphism fixes $K$ if and only if it fixes a set of generators for $K$
+        
+        \item Let $G \leq \Gal(K/F)$ be a subgroup of the Galois group of the extension $K/F$ and suppose  $\sigma_1, \cdots, \sigma_k$ are generators for $G$. Show that the subfield $E/F$ is fixed by $G$ if and only if it is fixed by the generators  $\sigma_1, \cdots, \sigma_k$
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item Let $x \in K = F(\alpha_1, \cdots, \alpha_n)$, then we have that $x = a_1\theta_1 + \cdots + a_m\theta_m$ where $\theta_i = \alpha_1^{j_{i,1}}\cdots \alpha_n^{j_{i,n}}$. (This is basically saying that each element in $K$ is expressed as a linear combination of all possible products of the $\alpha_i$'s, which is obviously true, for example, $\Q(\sqrt{2}, \sqrt{3}) = \{a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6}\mid a,b,c,d\in \Q\}$)
+
+        Then, we have that 
+        \[\sigma(x) = \sigma(a_1\theta_1 + \cdots + a_m\theta_m) = a_1\sigma(\theta_1) + \cdots + a_m\sigma(\theta_m)\]
+        since $\sigma$ is a homomorphism that fixes $F$. Furthermore,
+        \[\sigma(\theta_i) = \sigma(\alpha_1^{j_{i,1}}\cdots \alpha_n^{j_{i,n}}) = \sigma(\alpha_1^{j_{i,1}})\cdots \sigma(\alpha_n^{j_{i,n}})\]
+        and therefore $\sigma(x)$ is determined by $\sigma(a_1), \cdots, \sigma(a_n)$.
+
+        In particular, $\sigma(x) = x \in K \iff \sigma(\alpha_i) = \alpha_i$ for $1 \leq i \leq n$
+
+        \item Let $G=\langle \sigma_{1},\dots,\sigma_{k}\rangle$. That is, any element $\sigma\in G$ can be written in the form
+        $$
+        \sigma=\prod_{j=1}^{m}\gamma_{j}^{n_{j}}
+        $$
+        where each $\gamma_{j}\in\{\sigma_{i}\mid 1\leq i\leq k\}$ (note that $\gamma_{j}$ are not necessarily distinct, in fact there are likely to be repeats), and $n_{j}\in\Z$.
+
+        By assumption, each $\sigma_{i}\restriction_{E}=\mathbbm{1}$, that is $\sigma_{i}^{n_{i}}(x)=x$ for any $x\in E$ and $n_{i}\in\Z$. It follows immediately that
+        $$
+        \sigma(x)=(\prod_{j=1}^{m}\gamma_{j}^{n_{j}})(x)=x.
+        $$
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Let $\tau$ be the map $\tau:\C \to \C$ defined by $\tau(a+bi)=a-bi$. Prove that $\tau$ is an automorphism of $\C$
+\end{exercise}
+\begin{solution}
+    It is easily shown that $\tau$ is a homomorphism and that it is bijective and hence $\tau$ is an isomorphism
+\end{solution}
+
+\begin{exercise}
+    Determine the fixed field of complex conjugation on $\C$
+\end{exercise}
+\begin{solution}
+    The fixed field of complex conjugation is $F = \{a + bi \in 
+    \C \mid \tau(a + bi) = a + bi\}$, therefore we need $\tau(a + bi) = a - bi = a + bi \implies 2bi = 0 \implies b = 0$ therefore $a + bi \in F \iff b = 0$. In this case we have $a + bi = a \in \R$ and therefore $F = \R$ 
+\end{solution}
+
+\begin{exercise}
+    Prove that $\Q(\sqrt{2})$ and $\Q(\sqrt{3})$ are not isomorphic
+\end{exercise}
+\begin{solution}
+    An important note is that these 2 fields are isomorphic as vector spaces over $\Q$, however, they are not field isomorphic. We have previously shown in Chapter 13 that $\sqrt{2} \not\in \Q(\sqrt{3})$ and therefore if there was an isomorphism $\varphi:\Q(\sqrt{2}) \to \Q(\sqrt{3})$ then we can notice that $\varphi(\sqrt{2})^2 = \varphi(2) = 2$ because $\Q$ is fixed (Alternatively you can use the simpler fact that $\sigma(1) = 1$) which implies $\varphi(\sqrt{2})=\pm\sqrt{2} \not\in \Q(\sqrt{3})$ and therefore this isomorphism cannot exist.
+\end{solution}
+
+\begin{exercise}
+    Determine the automorphisms of the extension $\Q(\sqrt[4]{2})/\Q(\sqrt{2})$ explicitly
+\end{exercise}
+\begin{solution}
+    First we note that $[\Q(\sqrt[4]{2}):\Q(\sqrt{2})] = 2$ and we have minimal polynomial $x^2 - \sqrt{2} \in \Q(\sqrt{2})$ with roots $\pm\sqrt[4]{2}$ and therefore we can only have 2 automorphisms
+    \begin{align*}
+        \mathbbm{1}&:\sqrt[4]{2} \mapsto \sqrt[4]{2}\quad(Identity) \\
+        \sigma&:\sqrt[4]{2} \mapsto -\sqrt[4]{2}
+    \end{align*}
+\end{solution}
+
+\begin{exercise}
+    Let $k$ be a field
+    \begin{enumerate}[(a)]
+        \item Show that the mapping $\varphi:k[t]\to k[t]$ defined by $\varphi(f(t))=f(at + b)$ for fixed $a, b \in k, a \neq 0$ is an automorphism of $k[t]$ which is the identity on $k$
+        
+        \item Conversely, let $\varphi$ be an automorphism of $k[t]$ which is the identity on $k$. Prove that there exist $a, b \in k$ with $a \neq 0$ such $\varphi(f(t)) = f(at + b)$ as in $(a)$
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}[(a)]%it is sufficient to check that the map defined for the surjectivity check is in fact the inverse of \varphi
+        \item Let $f(t), g(t) \in k[t]$, then we show that $\varphi$ is an isomorphism. 
+        \[\varphi((f+g)(t)) = (f + g)(at + b) = f(at + b) + g(at + b) = \varphi(f(t)) + \varphi(g(t))\]
+        and 
+        \[\varphi((fg)(t)) = (fg)(at + b) = f(at + b)g(at+b) = \varphi(f(t))\varphi(g(t))\]
+        Therefore $\varphi$ is a homomorphism.
+        Now, suppose $\varphi(f(t))=\varphi(g(t))$. Then $f(at + b)=g(at + b)$ and because $k[at + b] = k[t]$ we have that $f(t)=g(t)$. Lastly let $g(t) \in k[t]$ then take $f(t) = g(\frac{t}{a} - \frac{b}{a}) \in k[t]$ and we have $\varphi(f(t)) = \varphi(f(at+b)) = g(a(\frac{t}{a}-\frac{b}{a}) + b) = g(t)$ and therefore $\varphi$ is bijective, finally we conclude $\varphi$ is an isomorphism.
+
+        Lastly, if $f(t) = c \in k \subset k[t]$ then $\varphi(f(t)) = f(at + b) = c$ and therefore $\varphi$ is the identity on $k$
+        %for part b, just check \varphi(t) and prove that this must be a degree 1 polynomial. Since \varphi is an automorphism of k[t] AND the identity on k, then \varphi(f(t))=f(\varphi(t)). Then the rest of the proof follows.
+        \item Suppose $\varphi(f(t)) = h(t)f(t) + g(t)$ where $g(t), h(t) \in k[t]$ then because $\varphi$ is identity on $k$ we would have $\varphi(c) = h(t)c + g(t) = c \implies g(t) = 0, h(t) = 1$ therefore we must have that $\varphi(f(t)) = f(g(t))$ for some $g(t) \in k[t]$. 
+        
+        We want $g(t) = at + b$ therefore we must show that if $\deg(g(t)) \geq 2$ there is a contradiction.
+        
+        Suppose $\deg(g(t)) \geq 2$ this implies that the $\deg(f(g(t)) \geq 2$ and therefore this map is not surjective, therefore we conclude $\deg(g(t)) \leq 1$.
+        
+        If $\deg(g(t)) = 0$ then $g(t) = b \in k$ and this map is not injective.
+        
+        Finally, we conclude that $\deg(g(t)) = 1$ and therefore $g(t) = at + b$ where $a, b \in k$ and $\varphi(f(t)) = f(g(t)) = f(at+b)$
+     \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    This exercise determines $\Aut(\R/\Q)$
+    \begin{enumerate}[(a)]
+        \item Prove that any $\sigma \in \Aut(\R/\Q)$ takes squares to squares and takes positive reals to positive reals. Conclude that $a < b$ implies $\sigma(a) < \sigma(b)$ for every $a, b \in \R$
+        
+        \item Prove that any $-\frac{1}{m} < a - b < \frac{1}{m}$ implies $-\frac{1}{m} < \sigma(a) - \sigma(b) < \frac{1}{m}$ for every positive integer $m$. Conclude that $\sigma$ is a continuous map on $\R$
+        
+        \item Prove that any continuous map on $\R$ which is the identity on $\Q$ is the identity map, hence $\Aut(\R/\Q) = 1$
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item Let $a\in\R$ be a square. That is, $\exists b\in\R$ s.t. $b^{2}=a$. Then $\sigma(a)=\sigma(b^{2})=(\sigma(b))^{2}$. That is, $\sigma$ takes squares to squares. Since the only squares in $\R$ are the non-negative reals, but $\sigma(a)=0\implies a=0$, so it must be that $\sigma$ takes positive reals to positive reals.
+
+        Suppose now that $b-a>0$, then $\sigma(b-a)>0$, giving that $\sigma(b)-\sigma(a)>0$.
+        
+        \item Since $\forall\sigma\in\Aut(\R/\Q)$, $\sigma$ fixes $\Q$, then
+        \begin{align*}
+            -\frac{1}{m}&<a-b<\frac{1}{m}\\
+            \sigma\left(-\frac{1}{m}\right)&<\sigma(a-b)<\sigma\left(\frac{1}{m}\right),\quad\sigma\text{ preserves order by part (a)}\\
+            -\frac{1}{m}&<\sigma(a)-\sigma(b)<\frac{1}{m},\quad\sigma\restriction_{\Q}=\mathbbm{1}
+        \end{align*}
+
+        Now we prove continuity. Let $\varepsilon > 0$ and take $|a-b|<\delta = \frac{1}{m} < \varepsilon$ then we have that $|\sigma(a) - \sigma(b)| < \frac{1}{m} < \varepsilon$
+
+        \item \begin{enumerate}[(Method 1)]
+            \item Let $x \in \R$, suppose $x < \sigma(x)$ then $\exists q \in \Q$ such that $x < q < \sigma(x)$ and then using $x < q$ we have from part (a) $\sigma(x) < \sigma(q) = q$ and therefore $x = \sigma(x)$ which is a contradiction. Similarly if $x > \sigma(x)$ we get a contradiction, therefore we conclude $x = \sigma(x), \forall x \in \R$
+            
+            \item Let $x \in \R, \varepsilon > 0$. Since $\sigma$ is continuous we know $\exists \delta_1 > |x - y|$ such that $|\sigma(x) - \sigma(y)| < \frac{\varepsilon}{2}$. Take $a \in \Q$ such that $|a - x| < \min\{\frac{\varepsilon}{2}, \delta_1\}$ then we have that
+            \[|\sigma(x) - x| = |\sigma(x) - a + a - x| = |\sigma(x) - a| + |a - x| = |\sigma(x) - \sigma(a)| + |a - x| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\]
+            which shows that $|\sigma(x) - x| < \varepsilon, \forall x \in \R$
+        \end{enumerate}
+    \end{enumerate}
+\end{solution}

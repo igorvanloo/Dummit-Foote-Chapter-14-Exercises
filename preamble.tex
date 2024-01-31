@@ -1,0 +1,88 @@
+\usepackage[use-files]{xsim}
+\usepackage{tasks}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{bbm}
+\usepackage{enumerate}
+\usepackage{etoolbox}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage[toc]{multitoc}
+\renewcommand*{\multicolumntoc}{2}
+\setlength{\columnseprule}{1pt}
+\usepackage{ocgx}
+\usepackage{libertine,libertinust1math}
+\usepackage{titlesec}
+
+\apptocmd{\lim}{\limits}{}{}
+
+\usepackage[top=1cm, bottom=2cm, left=3cm, right=3cm]{geometry}
+
+\newcommand{\ea}[1]{\begin{enumerate}[(a)]  #1  \end{enumerate}}
+\newcommand*\closingset[1]{\overline{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\dtheta}{\, d\theta}
+\newcommand{\ds}{\, ds}
+\newcommand{\dt}{\, dt}
+\newcommand{\dx}{\, dx}
+\newcommand{\dy}{\, dy}
+\newcommand{\du}{\, du}
+\newcommand{\dv}{\, dv}
+\newcommand{\dr}{\, dr}
+\newcommand{\dR}{\, dR}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\ord}{ord}
+
+\titleformat{\subsection}{\color{white}}{\textbf{Question \thesubsection}}{0.2em}{}
+
+\newtheorem{lemma}{Lemma}
+
+\renewenvironment{proof}{\noindent\textit{Proof.}}{\hfill$\blacksquare$}
+
+\newenvironment{unfinished}{
+\begin{tcolorbox}[colback=lightgray!15!white,colframe=red!75!black,title=\subsection{- Unfinished}%
+]%
+  }{
+\end{tcolorbox}
+}
+
+\renewenvironment{exercise}{
+\begin{tcolorbox}[colback=lightgray!15!white,colframe=green!70!black, ,title=\subsection{}%
+]%
+  }{
+\end{tcolorbox}
+}
+
+\renewenvironment{solution}%
+{\noindent\textit{Solution. }}{\hfill$\square$\vspace{0.7cm}}
+
+\newtheorem{dummy}{Dummy} %dummy for numbering purposes
+\newtheorem{dummy2}{Dummy2}
+\newtheorem{dummy3}{Dummy3}
+
+\theoremstyle{definition}
+\newtheorem{definition}[dummy]{Definition}
+\newtheorem{example}[dummy]{Example}
+\newtheorem{note}[dummy]{Note}
+\newtheorem{axiom}[dummy]{Axiom}
+\newtheorem{remark}[dummy]{Remark}
+\newtheorem{fact}[dummy]{Fact}
+\newtheorem{result}[dummy]{Result}
+\newtheorem{algo}[dummy]{Algorithm}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[dummy]{Theorem}
+\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{corollary}[dummy]{Corollary}
+
+\title{Dummit \& Foote Chapter 14 Selected Exercises}
+\author{
+    Igor van Loo\\ \href{https://www.linkedin.com/in/igorvanloo/}{\textcolor{cyan}{LinkedIn}} 
+    \and
+    Heer Tern}

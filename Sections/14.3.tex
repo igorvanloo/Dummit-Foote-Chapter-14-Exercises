@@ -1,0 +1,102 @@
+\begin{exercise}
+    Factor $x^8 - x$ into irreducibles in $\Z[x]$ and $\F_2[x]$
+\end{exercise}
+\begin{solution}
+    In $\Z[x]$ we have $x^8 - x = x(x^7 - 1) = x\cdot \Phi_1(x)\cdot \Phi_7(x) = x(x-1)(x^6 + x^5 + x^4 + x^3 + x^2 + x + 1)$.
+    From the discussion of Proposition 18 we have $x^8 - x = x(x-1)(x^3 + x + 1)(x^3 + x^2 + 1)$ in $\F_2[x]$
+\end{solution}
+
+\begin{exercise}
+    Write out the multiplication table for $\F_4$ and $\F_8$
+\end{exercise}
+\begin{solution}
+    We know $x^4 - x = x(x-1)(x^2 + x + 1)$ and $g(x) = x^2 + x + 1$ is irreducible in $\F_2[x]$. Let $\theta$ be a root of $g(x)$, we then have 
+    \[\F_4 \cong \F_2[x]/(x^2 + x + 1) \cong \F_2(\theta) = \{a + b\theta \mid a, b \in \F_2\} = \{0, 1, \theta, 1 + \theta\}\] Using $\theta^2 + \theta + 1 = 0$ we then have the multiplication table: 
+    $$\begin{array}{c|cccc}
+    \times & 0 & 1 & \theta & \theta+1 \\ \hline 
+    0 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & \theta & \theta+1 \\
+    \theta & 0 & \theta & \theta+1 & 1  \\
+    \theta+1 & 0 & \theta+1 & 1 & \theta
+    \end{array}
+    $$
+    From Question 3.1 we have $x^8 - x = x(x-1)(x^3 + x + 1)(x^3 + x^2 + 1)$ and $h(x) = x^3 + x + 1$ is irreducible in $\F_2[x]$, let $\alpha$ be a root of $h(x)$. We then have
+    \[\F_8 \cong \F_2(\alpha) \cong \F_2[x]/(x^3 + x + 1) \cong \{a + b\alpha + c\alpha^2 \mid a,b,c \in \F_2\} = \{0, 1, \alpha, \alpha + 1, \alpha^2, \alpha^2 + 1, \alpha^2 + \alpha, \alpha^2 + \alpha + 1\}\]
+    Using $\alpha^3 + \alpha + 1 = 0$, we have the multiplication table:
+    $$\begin{array}{c|cccccccc}
+    \times & 0 & 1 & \alpha & \alpha+1 & \alpha^2 & \alpha^2 + 1 & \alpha^2 + \alpha & \alpha^2 + \alpha + 1\\ \hline 
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    1 & 0 & 1 & \alpha & \alpha+1 & \alpha^2 & \alpha^2 + 1 & \alpha^2 + \alpha & \alpha^2 + \alpha + 1 \\
+    \alpha & 0 & \alpha & \alpha^2 & \alpha^2 + \alpha & \alpha + 1 & 1 & \alpha^2 + \alpha + 1 & \alpha^2 + 1 \\
+    \alpha + 1 & 0 & \alpha + 1 & \alpha^2 + \alpha & \alpha^2 + 1 & \alpha^2 + \alpha + 1 & \alpha^2 & 1 & \alpha \\
+    \alpha^2 & 0 & \alpha^2 & \alpha + 1 & \alpha^2 + \alpha + 1 & \alpha^2 + \alpha & \alpha & \alpha^2 + 1 & 1 \\
+    \alpha^2 + 1 & 0 & \alpha^2 + 1 & 1 & \alpha^2 & \alpha & \alpha^2 + \alpha + 1 & \alpha + 1 & \alpha^2 + \alpha \\ 
+    \alpha^2 + \alpha & 0 & \alpha^2 + \alpha & \alpha^2 + \alpha + 1 & 1 & \alpha^2 + 1 & \alpha + 1 & \alpha & \alpha^2 \\ 
+    \alpha^2 + \alpha + 1 & 0 & \alpha^2 + \alpha + 1 & \alpha^2 + 1 & \alpha & 1 & \alpha^2 + \alpha & \alpha^2 & \alpha + 1
+    \end{array}
+    $$
+\end{solution}
+
+\begin{exercise}
+    Prove that an algebraically closed field must be infinite
+\end{exercise}
+\begin{solution}
+   \begin{enumerate}[(Method 1)]
+       \item Suppose $K$ is a finite algebraically closed field, then $K \cong \F_{p^n} = \{\alpha \mid \alpha^{p^n} - \alpha = 0\}$. Let $\alpha_0, \alpha_1 \cdots \alpha_n$ be the distinct roots and hence all the elements of $K$, then $f(x) = 1 + \prod_{i = 0}^n(x - \alpha_i)$ has no root in $K[x]$ which contradicts the assumption that $K$ is algebraically closed. %Nice solution
+
+       \item Alternatively, for a field to be algebraically closed, it necessarily must contain roots of $x^{p^{m}}-x$ for any $m$ and for any prime $p$. Since each $x^{p^{m}}-x$ has $p^{m}$ distinct roots, then $|\mathbb{F}|\geq p^{m}$ for any $p,m$. That is, it must be infinite.
+
+       \item  Alternatively, we proceed by contraposition. Fix some arbitrary finite field $\mathbb{F}_{p^{n}}$. Let $q$ be a prime s.t. $q\not\mid n$. By proposition 17, $\exists Q(x)\in\mathbb{F}_{p}$ irreducible and of degree $q$. Fix any $\alpha\in\mathbb{F}_{p^{n}}$. If $Q(\alpha)=0$, then we have the following.
+   $$
+   \mathbb{F}_{p}\subseteq\mathbb{F}_{p}(\alpha)\subseteq\mathbb{F}_{p^{n}}
+   $$
+   where the degree of the first extension is $q$. But $q\not\mid n$ and thus cannot be the case.
+   \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Construct the finite field of 16 elements and find a generator for the multiplicative group. How many generators are there?
+\end{exercise}
+\begin{solution}
+    A finite field with 16 elements will be isomorphic to $\F_{2^4}$. Again by the discussion of Proposition 18 we have $x^{16} - x = x(x-1)(x^2 + x + 1)(x^4 + x^3 + 1)(x^4 + x + 1)(x^4 + x^3 + x^2 + x + 1)$ and $f(x) = x^4 + x + 1$ is irreducible in $\F_2[x]$, let $\theta$ be a root of $f(x)$, hence we have 
+    \begin{multline*}
+    \F_{16} \cong \F_2[x]/(f(x)) \cong \F_2(\theta) = \\
+    \{0, 1, \theta, \theta^2, \theta^3, 1 + \theta, 1 + \theta^2, 1 + \theta^3, \theta + \theta^2, \theta + \theta^3, \theta^2 + \theta^3, 1 + \theta + \theta^2, 1 + \theta + \theta^3, 1 + \theta^2 + \theta^3,\theta + \theta^2 + \theta^3, 1 + \theta + \theta^2 + \theta^3\}
+    \end{multline*}
+
+    \noindent Now we can notice that $x^3 \neq x, x^5 = x + x^2 \neq x$ hence $\ord(x) \neq 3$ or $5$ but it must divide $15 = |\F_{16}^{\times}|$, hence $\ord(x) = 15$ and $\langle x \rangle$ generates $\F_{16}^{\times}$, therefore we conclude $\langle x \rangle \cong \Z_{15}$ and hence there will be $\varphi(15) = 8$ generators, they are $\{x^a \mid \gcd(a, 15) = 1\} = \{x^1,x^2,x^4,x^7,x^8,x^{11},x^{13},x^{14}\}$
+\end{solution}
+
+\begin{exercise}
+    Exhibit an explicit isomorphism between the splitting fields of $x^3 - x + 1$ and $x^3 - x - 1$ over $\F_3$
+\end{exercise}
+\begin{solution}
+    Notice that $f(x) = x^3 - x + 1$ and $g(x) = x^3 - x - 1$ are both irreducible in $\F_3[x]$ because $f(0) = f(1) = f(2) = 1 \neq 0$ and $g(0) = g(1) = g(2) = -1 = 2 \neq 0$, therefore we have \[\F_{27} \cong \F_3[x]/(f(x)) \cong \F_3[x]/(g(x))\]
+
+    \noindent Let $\alpha(x) = ax^2 + bx + c$ be a root of $f(x)$ in $\F_3[x]/(g(x))$, then if we map $x \in \F_3/(f(x)) \mapsto \alpha(x)$ we have our isomorphism. Now, we need to find $\alpha(x)$ such that $f(\alpha(x)) = 0$
+    \begin{align*}
+        f(\alpha(x)) &= (ax^2 + bx + c)^3 - (ax^2 + bx + c) + 1 \\
+        &= ax^6 + bx^3 + c - ax^2 - bx - c + 1 \quad \textit{($d^3 = d$ for $d \in \F_3$)} \\
+        &= a(x + 1)^2 + b(x + 1) + c - ax^2 - bx - c + 1 \quad \textit{($x^3 = x + 1$ in $\F_3/(g(x))$} \\
+        &= ax^2 + 2ax + a + bx + b + c - ax^2 - bx - c + 1 \\
+        &= 2ax + b + a + 1 = 0
+    \end{align*}
+    Therefore we have $a = 0, b = 2$, then we just let $c = 0$ and we have $\alpha(x) = 2x$, we finally have the explicit isomorphism
+    \begin{align*}
+        \F_3[x]/(f(x)) &\mapsto \F_3[x]/(g(x)) \\
+        x &\mapsto 2x
+    \end{align*}
+\end{solution}
+
+\begin{unfinished}
+    Suppose $K = \Q(\theta) = \Q(\sqrt{D_1}, \sqrt{D_2})$ with $D_1, D_2 \in \Z$, is a biquadratic extension and that $\theta = a + b\sqrt{D_1} + c\sqrt{D_2} + d\sqrt{D_1D_2}$ where $a, b, c, d \in \Z$ are integers. Prove that the minimal polynomial $m_{\theta}(x)$ for $\theta$ over $\Q$ is irreducible of degree 4 over $\Q$ but is reducible modulo every prime $p$. In particular show that the polynomial $x^4 - 10x^2 + 1$ is irreducible in $\Z[x]$ but is reducible modulo every prime. [Use the fact that there are no biquadratic extensions over finite fields.]
+\end{unfinished}
+
+\begin{exercise}
+    Prove that one of 2, 3 or 6 is a square in $\F_p$ for every prime $p$. Conclude that the polynomial \[x^6 - 11x^4 + 36x^2 - 36 = (x^2 - 2)(x^2 - 3)(x^2 - 6)\] has a root modulo $p$ for every prime $p$ but has no root in $\Z$
+\end{exercise}
+\begin{solution}
+    Let $\langle x \rangle = \F_p^{\times}$. Then $a \in \F_p^{\times}$ is a square if and only if $a = x^{2k} = (x^k)^2$ where $b \in \F_p^{\times}, k \in \Z$. Now suppose 2 and 3 are not square in $\F_p$, this means $2 = x^{2k_1 + 1}$ and $3 = x^{2k_2 + 1}$ where $k_1, k_2 \in \Z$ and therefore $6 = x^{2(k_1 + k_2 + 1)}$ is a square in $\F_p$.
+
+    \noindent Therefore, 2, 3 or 6 must be a square in $\F_p$ and hence WLOG suppose 2 is a square in $\F_p$ there is an $a \in \F_p$ such that $a^2 - 2 = 0$ which implies $a$ is a root of $(x^2 - 2)(x^2 - 3)(x^2 - 6)$. Furthermore, the real roots of this polynomial are $\pm \sqrt{2}, \pm \sqrt{3}, \pm \sqrt{6}$ which are all not integers, hence the polynomial has no root in $\Z$.
+\end{solution}

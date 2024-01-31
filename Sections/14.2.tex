@@ -1,0 +1,283 @@
+\begin{exercise}
+    Determine the minimal polynomial over $\Q$ for the element $\sqrt{2}+\sqrt{5}$
+\end{exercise}
+\begin{solution}
+    $\Q(\sqrt{2}+\sqrt{5}) \subset \Q(\sqrt{2}, \sqrt{5})$ which is Galois over $\Q$ and therefore the roots of the minimal polynomial are $\pm\sqrt{2}\pm\sqrt{5}$ which are all distinct. Hence the minimal polynomial is $(x-(\sqrt{2}+\sqrt{5})(x + (\sqrt{2}+\sqrt{5}))(x - (\sqrt{2}-\sqrt{5}))(x + (\sqrt{2}-\sqrt{5})) = x^4 - 14x^2 + 9$
+\end{solution}
+\begin{exercise}
+    Determine the minimal polynomial over $\Q$ for the element $1 + \sqrt[3]{2} + \sqrt[3]{4}$
+\end{exercise}
+\begin{solution}
+    We have shown in chapter 13 that $\Q(1 + \sqrt[3]{2} + \sqrt[3]{4}) \subset \Q(\sqrt[3]{2}) \subset \Q(\sqrt[3]{2}, \zeta)$ where $\zeta = e^{\frac{2\pi i}{3}}$ which is a Galois extension, therefore $\sqrt[3]{2}$ must be sent to $\sqrt[3]{2}, \sqrt[3]{2}\zeta, \sqrt[3]{2}\zeta^2$ and notice that we only care about where $\sqrt[3]{2}$ is sent as $\sqrt[3]{2}^2 = \sqrt[3]{4}, \sqrt[3]{2}^3 = 1$.
+
+    Knowing this we know that the 3 roots of our minimal polynomial are
+    \begin{align*}
+        r_1 = 1 + \sqrt[3]{2} + \sqrt[3]{4} \\
+        r_2 = 1 + \sqrt[3]{2}\zeta + \sqrt[3]{4}\zeta^2 \\
+        r_3 = 1 + \sqrt[3]{2}\zeta^2 + \sqrt[3]{4}\zeta
+    \end{align*}
+
+    Painfully expanding $(x - r_1)(x - r_2)(x - r_3)$ gives you $x^3 - 3x^2 - 3x - 1$. Alternatively $(r_1-1)^3=(\sqrt[3]{2} + \sqrt[3]{4})^3=2+3\sqrt[3]{16}+3\sqrt[3]{32}+4=6+6(\sqrt[3]{2}+\sqrt[3]{4})=6+6(r_1-1)=6r_1$
+\end{solution}
+
+\begin{exercise}
+    Determine the Galois group of $f = (x^2 - 2)(x^2 - 3)(x^2 - 5)$. Determine all subfields of the splitting field of $f$
+\end{exercise}
+\begin{solution}
+    The splitting field of $f$ is clearly $K = \Q(\sqrt{2},\sqrt{3},\sqrt{5})$ and any automorphism of $K$ will map $\sqrt{a} \to \pm \sqrt{a}$ where $a \in \{2,3,5\}$ and therefore there are 8 total automorphisms. Now we must show that there are no more than 8, this is done by noting that $|\Aut(K/\Q)| \leq [K:\Q] = 8$, furthermore we can conclude that this extensions is Galois. 
+    The subfields are 
+    \begin{multline*}
+        \Q(\sqrt{a}) \text{ where } a \in \{2,3,5,6,10,15,30\} \\ \Q(\sqrt{2},\sqrt{3}), \Q(\sqrt{2},\sqrt{5}), \Q(\sqrt{3},\sqrt{5}), \Q(\sqrt{2},\sqrt{15}), \Q(\sqrt{3},\sqrt{10}), \Q(\sqrt{5},\sqrt{6}),
+        \Q(\sqrt{10}, \sqrt{15})
+    \end{multline*}        
+\end{solution}
+
+\begin{exercise}
+    Let $p$ be a prime. Determine the elements of the Galois group of $x^p - 2$
+\end{exercise}
+\begin{solution}
+    The splitting field of $x^p - 2$ is $K = \Q(\sqrt[p]{2}, \zeta)$ where $\zeta$ is the p-th root of unity.
+    \begin{enumerate}
+        \item Consider $G_1 = \Gal(K/\Q(\zeta))$ and $\tau(\sqrt[p]{2})=\sqrt[p]{2}\zeta$ and it fixes $\zeta$. The order of $\tau$ is $p$ and therefore $G_1 \cong \big< \tau \big> \cong C_p$
+        \item Consider $G_2 = \Gal(K/\Q(\sqrt[p]{2}))$ and $\sigma(\zeta)=\zeta^a$ and it fixes $\sqrt[p]{2}$. The order of $\sigma$ is $p-1$ because $a^{p-1} \equiv 1 \pmod{p}$ and therefore $G_2 \cong \big< \sigma \big> \cong C_{p-1}$
+    \end{enumerate}
+    Furthermore, we know the following:
+    \begin{enumerate}
+        \item $[K:\Q] = [K:\Q(\sqrt[p]{2})][\Q(\sqrt[p]{2}):\Q] = (p-1)p$ is a galois extension and hence $|G| = |\Gal(K/\Q)| = p(p-1)$
+        \item $|\big< \tau \big>||\big< \sigma \big>| = p(p-1)$
+        \item $|\big< \tau \big> \bigcap \big< \sigma \big>| = 1$
+    \end{enumerate}
+    Therefore, using point 2 and 3 and the following $|\big< \tau \big>\big< \sigma \big>| = \frac{|\big< \tau \big>||\big< \sigma \big>|}{|\big< \tau \big> \bigcap \big< \sigma \big>|}$ we have that $G = \big< \tau \big>\big< \sigma \big>$. Futhermore we can notice that $K^{G_1}/\Q = \Q(\zeta)/\Q$ is a galois extension because $[\Q(\zeta):\Q] = p-1 = |\Aut(\Q(\zeta)/\Q)|$ and therefore $G_1 \triangleleft G$ and therefore we have $G \cong C_p \rtimes C_{p-1}$
+\end{solution}
+
+\begin{exercise}
+    Prove that the Galois group of $x^p - 2$ for $p$ a prime is isomorphic to the group of matrices 
+    $$
+    \begin{pmatrix}
+        a & b \\
+        0 & 1
+    \end{pmatrix}$$ where $a, b \in \F_p, a \neq 0$
+\end{exercise}
+\begin{solution}
+    Let $G = \Gal(\Q(\sqrt[p]{2}, \zeta)/\Q)$. Now notice that any element $\varphi \in G$ is determined by $\varphi(\zeta)$ and $\varphi(\sqrt[p]{2})$, where $\varphi(\zeta) = \zeta^a$ for some $1 \leq i \leq p-1$ and $\varphi(\sqrt[p]{2}) = \sqrt[p]{2}\zeta^b$ for some $0 \leq b \leq p-1$ then we define the map 
+    \[\alpha:G \to
+    \{\begin{pmatrix}
+        a & b \\
+        0 & 1
+    \end{pmatrix} \text{ where }a, b \in \F_p, a \neq 0\}\]
+    \[\alpha(\varphi) = \begin{pmatrix}
+        a & b \\
+        0 & 1
+    \end{pmatrix}\]
+    This is a homomorphism and bijective, hence an isomorphism 
+\end{solution}
+
+\begin{exercise}
+    Let $K = \Q(\sqrt[8]{2}, i)$ and let $F_1 = \Q(i), F_2 = \Q(\sqrt{2}), F_3 = \Q(-\sqrt{2})$. Prove that $\Gal(K/F_1) \cong \Z_8, \Gal(K/F_2) \cong D_8, \Gal(K/F_3) \cong Q_8$
+\end{exercise}
+\begin{solution}
+    We follow the discussion from Chapter 14.2 where we found that \[\Gal(K/\Q) = \big< \sigma, \tau : \sigma^8 = \tau^2 = 1, \sigma\tau = \tau\sigma^3 \big> \text{ where } \sigma = \begin{cases}
+        \sqrt[8]{2} \to \zeta\sqrt[8]{2} \\
+        i \to i \\
+        \zeta \to \zeta^5
+    \end{cases} \text{ and } \tau = \begin{cases}
+        \sqrt[8]{2} \to \sqrt[8]{2} \\
+        i \to -i \\
+        \zeta \to \zeta^7
+    \end{cases}\]
+    \begin{enumerate}
+        \item Clearly $\sigma$ fixes $i$ therefore $\Gal(K/F_1) = \big< \sigma \big> \cong \Z_8$
+        
+        \item $\tau$ fixes $\sqrt{2}$ already, now we need $\sigma^n(\sqrt{2}) = \sigma^n(\sqrt[8]{2})^4 = \sqrt{2}\zeta^{4n}$, we need $\zeta^{4n} = 1 \implies n = 2, 4, 6$, therefore $\Gal(K/F_2) = \{1, \sigma^2, \sigma^4, \sigma^6, \tau, \tau\sigma^2, \tau\sigma^4, \tau\sigma^6\} = \big< \sigma^2, \tau \big>$ where $(\sigma^2)^4 = \tau^2 = 1$ and $\sigma^2\tau = \tau\sigma^6$ which describes $D_8$ and therefore $\Gal(K/F_2) \cong D_8$
+        
+        \item Note that $\sqrt{-2} = \sqrt{2}i (\sqrt[8]{2})^4i$, clearly $\tau$ will not fix this. We try $\sigma^n((\sqrt[8]{2})^4i) = \zeta^{4n}\sqrt{2}i$ therefore $n = 2, 4, 6$ from part 2. Next we try $\tau\sigma^n((\sqrt[8]{2})^4i) = \tau(\zeta^4n\sqrt{2}i) = -\zeta^{28n}\sqrt{2}i = -\zeta^{4n}\sqrt{2}i$, we need $-\zeta^4 = 1 \implies n = 1, 3, 5, 7$ therefore $\Gal(K/F_3) = \{1, \sigma^2, \sigma^4, \sigma^6, \tau\sigma, \tau\sigma^3, \tau\sigma^5, \tau\sigma^7\} = \big< \sigma^2, \tau\sigma^3 \big>$ with the relations $(\sigma^2)^4 = 1, (\sigma^2)^2 = \sigma^4 = (\tau\sigma^3)^2, \tau\sigma^4=(\sigma^2)^{-1}\tau\sigma^3$ which describes $Q_8$ and therefore $\Gal(K/F_3) \cong Q_8$
+        \end{enumerate}
+\end{solution}
+
+\begin{unfinished}
+    Determine all the subfields of the splitting field of $x^8 - 2$ which are Galois over $\Q$
+\end{unfinished}
+
+\begin{unfinished}
+    Suppose $K$ is a Galois extension of $F$ of degree $p^n$ for some prime $p$ and some $n\geq 1$. Show there are Galois extensions of $F$ contained in $K$ of degrees $p$ and $p^{n-1}$
+\end{unfinished}
+
+\begin{exercise}    
+    Give an example of fields $F_1, F_2, F_3$ with $\Q \subset F_1 \subset F_2 \subset F_3, [F_3:\Q] = 8$ and each field if Galois over all of its subfields with the exception that $F_2$ is not Galois over $\Q$
+\end{exercise}
+\begin{solution}
+    Take $F_3 = \Q(\sqrt[4]{2}, i), F_2 = \Q(\sqrt[4]{2}), F_1 = \Q(\sqrt{2})$. Then we have that $F_3$ is Galois over $F_2, F_1, \Q$, $F_2$ is Galois over $F_1$ but not Galois over $\Q$ and $F_1$ is Galois over $\Q$
+\end{solution}
+
+\begin{exercise}
+    Determine the Galois group of the splitting field over $\Q$ of $x^8 - 3$
+\end{exercise}
+\begin{solution}
+    The splitting field of the polynomial is $K = \Q(\sqrt[8]{3}, \zeta) = \Q(\sqrt[8]{3}, \sqrt{2}, i)$ where $\zeta$ is an 8-th root of unity. This extension is of degree 32 because of the following, $[K:\Q]=[K:\Q(\sqrt[8]{3}, \sqrt{2})][\Q(\sqrt[8]{3}, \sqrt{2}):\Q(\sqrt{2})][\Q(\sqrt{2}):\Q] = 32$ because we can show that $\sqrt[8]{3} \not\in \Q(\sqrt{2})$.
+
+    \noindent Any automorphism of $\Aut(K/\Q)$ is of the form \[\sqrt[8]{3} \mapsto \sqrt[8]{3}\zeta^i, 1\leq i \leq 7,\quad \sqrt{2} \mapsto \pm\sqrt{2},\quad i \mapsto \pm i\]%Probably still need to check that there are not too many relations between these automorphisms so that we actually obtain 32 of them.
+
+    Alternatively, consider the generators
+    \begin{enumerate}
+        \item $\sigma:\sqrt[8]{3}\mapsto\sqrt[8]{3}\zeta$.
+        \item $\tau_{i}:\zeta\mapsto\zeta^{i}$, for $i\in\{3,5,7\}$
+    \end{enumerate}
+    and work out the relations. Namely, all automorphisms can be written in the form $\sigma^{a},\sigma^{a}\tau_{3},\sigma^{a}\tau_{5},\sigma^{a}\tau_{7}$ for $0\leq a\leq 7$, giving exactly 32 automorphisms as desired.
+\end{solution}
+
+\begin{unfinished}
+    Suppose $f(x) \in \Z[x]$ is an irreducible quartic whose splitting field has Galois group $S_4$ over $\Q$ (there are many such quartics, cf. Section 6). Let $\theta$ be a root of $f(x)$ and set $K = \Q(\theta)$. Prove that $K$ is an extension of $\Q$ of degree 4 which has no proper subfields. Are there any Galois extensions of $\Q$ of degree 4 with no proper subfields?
+\end{unfinished}
+
+\begin{exercise}
+    Determine the Galois group of the splitting field over $\Q$ of $x^4 - 14x^2 + 9$.
+\end{exercise}
+\begin{solution}
+    \textbf{Note:} From Question 2.1 we can already see that the splitting field of the polynomial is $\Q(\sqrt{2} + \sqrt{5}) = \Q(\sqrt{2}, \sqrt{5})$ and therefore $\Gal(\Q(\sqrt{2} + \sqrt{5})/\Q) \cong K_4$, now we can just confirm the answer.
+    
+    \noindent Solving for $x^2$ using the quadratic formula we see that \[x^2 = \frac{14 \pm \sqrt{14^2-4(1)(9)}}{2} = 7 \pm 2\sqrt{10} = (\sqrt{2} \pm \sqrt{5})^2\]
+    Then, we have that the roots of the polynomial are $\pm \sqrt{2} \pm \sqrt{5}$ and therefore the splitting field of the polynomial is $\Q(\sqrt{2} + \sqrt{5}) = \Q(\sqrt{2}, \sqrt{5})$ which has 4 automorphisms. 
+    
+    Finally, we conclude \[\Gal(\Q(\sqrt{2} + \sqrt{5})/\Q) = \{1, \sigma, \tau, \sigma\tau = \tau\sigma\} \cong K_4 \text{ where } \sigma = \begin{cases}
+        \sqrt{2} \to \sqrt{2} \\
+        \sqrt{5} \to -\sqrt{5}
+    \end{cases} \text{ and } \tau = \begin{cases}
+        \sqrt{2} \to -\sqrt{2} \\
+        \sqrt{5} \to \sqrt{5}
+    \end{cases}\]
+\end{solution}
+
+\begin{exercise}
+    Prove that if the Galois group of the splitting field of a cubic over $\Q$ is the cyclic group of order 3 then all the roots of the cubic are real.
+\end{exercise}
+\begin{solution}
+    Suppose the 3 roots are not all real, then we must have one real root $r_1$ and 2 complex roots $z, \overline{z}$ in which case the splitting field would be $\Q(r_1, z)$ and we have an automorphism of $\Gal(\Q(r_1, z)/\Q)$ which would fix $r_1$ and send $z \mapsto \overline{z}$ and therefore $2$ would divide $|\Gal(\Q(r_1,z)/\Q)|$ and hence $\Gal(\Q(r_1,z)/\Q) \not\cong \Z_3$
+\end{solution}
+
+\begin{exercise}
+    Show that $\Q(\sqrt{2+\sqrt{2}})$ is a cyclic quartic field, i.e, is a Galois extension of degree 4 with cyclic Galois group
+\end{exercise}
+\begin{solution}
+    Let $K = \Q(\sqrt{2 + \sqrt{2}})$. We find a polynomial with root $x = \sqrt{2+\sqrt{2}}$ using the following $x^2 = 2 + \sqrt{2} \implies x^2 - 2 = \sqrt{2} \implies x^4 -4x^2 + 4 = 2 \implies x^4 - 4x^2 + 2$ which is a degree 4 polynomial and is irreducible by Eisenstein criterion, therefore it is the minimum polynomial of $\sqrt{2 + \sqrt{2}}$ over $\Q$. The 4 roots are $\pm \sqrt{2 \pm \sqrt{2}}$ and we can notice that $\sqrt{2 - \sqrt{2}} = \frac{\sqrt{2}}{\sqrt{2 + \sqrt{2}}} \in K$, so all our roots are contained in $K$ which makes $K$ the splitting field of a separable polynomial (as the roots are distinct) and therefore a Galois Extension of $\Q$, hence $|\Aut(K/\Q)| = [K:\Q] = 4$. Furthermore, if $\sigma \in \Gal(K/\Q)$ such that $\sigma(\sqrt{2 + \sqrt{2}}) = \sqrt{2 - \sqrt{2}}$ we have that \[\sigma^2(\sqrt{2 + \sqrt{2}}) = \sigma(\sqrt{2 - \sqrt{2}}) = \sigma(\frac{\sqrt{2}}{\sqrt{2 + \sqrt{2}}}) = \frac{\sigma(\sqrt{2})}{\sigma(\sqrt{2 + \sqrt{2}})} = \frac{\sigma((\sqrt{2 + \sqrt{2}})^2 - 2)}{\sqrt{2 - \sqrt{2}}} = \frac{-\sqrt{2}}{\sqrt{2 + \sqrt{2}}} = -\sqrt{2 - \sqrt{2}}\]
+    Therefore $\ord(\sigma) > 2$ and it must divide 4, which implies that $\ord(\sigma) = 4$ and therefore $\Gal(K/\Q) \cong \Z_4$
+\end{solution}
+
+\begin{exercise}
+    \textit{(Biquadratic extensions)} Let $F$ be a field of characteristic $\neq 2$
+    \begin{enumerate}[(a)]
+        \item If $K = F(\sqrt{D_1}, \sqrt{D_2})$ where $D_1, D_2 \in F$ have the property than none of $D_1, D_2, D_1D_2$ is a square in $F$, prove that $K/F$ is a Galois extension with $\Gal(K/F)$ isomorphic to the Klein 4 group
+
+        \item Conversly, suppose $K/F$ is a Galois extension with $\Gal(K/F) \cong K_4$. Prove that $K = F(\sqrt{D_1}, \sqrt{D_2})$ where $D_1, D_2 \in F$ have the property that none of $D_1, D_2, D_1D_2$ is square in $F$
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item If $D_1, D_2$ are not square in $F$ this implies that $[F(\sqrt{D_1}):F]=[F(\sqrt{D_2}):F]=2$ and therefore \[[K:F] = [K:F(\sqrt{D_1})][F(\sqrt{D_1}):F] \leq [F(\sqrt{D_1}):F][F(\sqrt{D_2}):F] = 4\]
+        We then have that $[K:F(\sqrt{D_1})] \leq 2$. To show that $[K:F(\sqrt{D_1})] = 2$ we show that $\sqrt{D_2} \not\in F(\sqrt{D_1})$. Suppose $\sqrt{D_2} \in F(\sqrt{D_1})$ then we have $\sqrt{D_2} = a + b\sqrt{D_1}$ where $a, b \in F$, this implies $D_2 = a^2 + 2ab\sqrt{D_1} + b^2D_1$, because $D_2$ is not square in $F$ we must have $a = 0$ or $b = 0$. If $b = 0$ then $D_2 = a^2$ which means $D_2$ is a square, a contradiction. If $a = 0$ then $D_2 = b^2D_1 \implies D_1D_2 = b^2D_1^2$ which means $D_1D_2$ is a square, a contradiction. Hence we conclude $\sqrt{D_2} \not\in F(\sqrt{D_1})$ and therefore $[K:F] = 4$. Furthermore, it is easy to see that we have 4 automorphisms of $K$ fixing $F$
+        \[Id \quad \sigma = \begin{cases}
+            \sqrt{D_1} \mapsto -\sqrt{D_1} \\
+            \sqrt{D_2} \mapsto \sqrt{D_2}
+        \end{cases} \quad \tau = \begin{cases}
+            \sqrt{D_1} \mapsto \sqrt{D_1} \\
+            \sqrt{D_2} \mapsto -\sqrt{D_2}
+        \end{cases} \quad \sigma\tau = \tau\sigma = \begin{cases}
+            \sqrt{D_1} \mapsto -\sqrt{D_1} \\
+            \sqrt{D_2} \mapsto -\sqrt{D_2}
+        \end{cases}\] and hence we conclude that $K/F$ is a Galois extension with $\Gal(K/F) \cong K_4$
+
+        \item Given that $\Gal(K/F) \cong K_4$ and $K_4$ has 3 non-trivial subgroups or order 2; $\langle 1, \sigma \rangle, \langle 1, \tau \rangle, \langle 1, \sigma\tau \rangle$ there will be correspondingly 3 subfields $E_1, E_2, E_3$ of $K$ containing $F$ where they are degree 2 extensions of $F$. Let $E_1 = F(\sqrt{D_1}), E_2 = F(\sqrt{D_2})$ where $D_1, D_2$ are not square in $F$ as needed, then the fact that $E_1 \neq E_2 \implies D_1D_2$ is not square in $F$ from part (a), therefore $E_3 = F(\sqrt{D_1D_2})$ is a degree 2 extension of $F$. Finally, we have that $E_1E_2$ is a degree 4 extension over $F$ and $E_1, E_2, E_3 \subset E_1E_2 \implies K = E_1E_2 = F(\sqrt{D_1}, \sqrt{D_2})$ 
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    \begin{enumerate}[(a)]
+        \item Prove that $x^4 - 2x^2 - 2$ is irreducible over $\Q$
+
+        \item Show that the roots of this quartic are
+        \begin{align*}
+            \alpha_1 = \sqrt{1 + \sqrt{3}} \quad \alpha_3 = -\sqrt{1 + \sqrt{3}} \\
+            \alpha_2 = \sqrt{1 - \sqrt{3}} \quad \alpha_4 = -\sqrt{1 - \sqrt{3}}
+        \end{align*}
+
+        \item Let $K_1 = \Q(\alpha_1)$ and $K_2 = \Q(\alpha_2)$. Show that $K_1 \neq K_2$ and $K_1 \cap K_2 = \Q(\sqrt{3}) = F$.
+
+        \item Prove that $K_1, K_2$ and $K_1K_2$ are Galois over $F$ with $\Gal(K_1K_2/F)$ the Klein 4-group. Write out the elements of $\Gal(K_1K_2/F)$ explicitly. Determine all the subgroups of the Galois group and give their corresponding fixed subfields of $K_1K_2$ containing $F$.
+
+        \item Prove that the splitting field of $x^4 - 2x^2 - 2$ over $\Q$ is of degree 8 with dihedral Galois group 
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item Using Eisenstein with $p = 2$ shows that $x^4 - 2x^2 - 2$ is irreducible over $\Q$
+
+        \item $(x - \sqrt{1 + \sqrt{3}})(x + \sqrt{1 + \sqrt{3}})(x - \sqrt{1 -\sqrt{3}})(x + \sqrt{1 - \sqrt{3}}) = (x^2 - (1 + \sqrt{3}))(x^2 - (1 - \sqrt{3})) = x^4 -2x^2 -2$
+
+        \item Notice that $1 - \sqrt{3} < 0$ and $\Q(\alpha_1) \subset \R$ and $\alpha_2$ is a complex number and therefore $\alpha_2 \not\in \Q(\alpha_1)$ which implies $K_1 \neq K_2$. Since $K_{1}\neq K_{2}$, then $F = K_1 \cap K_2$ is a proper subfield of $K_1$ and $K_2$ which are both degree 4 extensions of $\Q$, hence $F$ has degree 1 or 2, it is easy to see that $\sqrt{3} \in F$ and $\sqrt{3} \not\in \Q$ and hence we can conclude $F = \Q(\sqrt{3})$
+
+        \item $[K_1:F] = \frac{[K_1:\Q]}{[F:\Q]} = \frac{4}{2} = 2$, quadratic extensions are always Galois, similarly $K_2$ is a Galois extension of $F$, additionally this shows that $1 \pm \sqrt{3}$ are not squares in $F$. Let $K = F(\sqrt{1 + \sqrt{3}}, \sqrt{1 - \sqrt{3}})$ notice that $K_1, K_2$ are proper subfields of $K$, hence $K_1K_2 \subset K$. Conversely, we know that $[K_1K_2:F] \leq [K_1:F][K_2:F] = 4$ therefore we must have $K_1K_2 = K$. By the previous exercise we know that $\Gal(K_1K_2/F) \cong K_4$. We can explicitly write out the elements of $\Gal(K_1K_2/F)$ as follows
+        \[Identity \quad \sigma_1 = \begin{cases}
+            \alpha_1 \mapsto -\alpha_1 \\
+            \alpha_2 \mapsto \alpha_2
+        \end{cases} \quad \sigma_2 = \begin{cases}
+            \alpha_1 \mapsto \alpha_1 \\
+            \alpha_2 \mapsto -\alpha_2
+        \end{cases} \quad \sigma_3 = \sigma_1\sigma_2 = \sigma_2\sigma_1 = \begin{cases}
+            \alpha_1 \mapsto -\alpha_1 \\
+            \alpha_2 \mapsto -\alpha_2
+        \end{cases}\]
+        The subgroups are $\langle \sigma_1 \rangle, \langle \sigma_2 \rangle, \langle \sigma_3 \rangle$ with corresponding subfields $F(\alpha_2), F(\alpha_1), F(\alpha_1\alpha_2) = F(\sqrt{-2})$
+    
+        \item The splitting field of $x^4 - 2x^2 - 2$ is $K = F(\alpha_1, \alpha_2)$ and we know $[F(\alpha_1, \alpha_2):F] = 4$ and $[F:\Q] = 2$ from (c) and (d), therefore $[F(\alpha_1, \alpha_2):\Q] = [F(\alpha_1, \alpha_2):F][F:\Q] = 8$. All that is left is to show that $\Gal(F(\alpha_1, \alpha_2)/\Q) \cong D_8$
+        
+        \noindent In Chapter 14.6 we learn that $\Gal(F(\alpha_1, \alpha_2)/\Q) \hookrightarrow S_4$, the reason being that a Galois extension permutes the roots. Using this and the fact that $D_8$ is the only subgroup of $S_4$ with order 8, we conclude that $\Gal(F(\alpha_1, \alpha_2)/\Q) \cong D_8$
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Let $K/F$ be any finite extension and let $\alpha \in K$. Let $L$ be a Galois extension of $F$ containing $K$ and let $H \leq \Gal(L/F)$ be the subgroup corresponding to $K$. Define the \textit{norm} of $\alpha$ from $K$ to $F$ to be 
+    \[N_{K/F}(\alpha) = \prod_{\sigma} \sigma(\alpha)\]
+    where the product is taken over all the embeddings of $K$ into an algebraic closure of $F$ (so over a set of coset representatives for $H$ in $\Gal(L/F)$ by the Fundamental Theorem of Galois Theory). This is a product of Galois conjugates of $\alpha$. In particular, if $K/F$ is Galois this is $\prod_{\sigma \in \Gal(K/F)} \sigma(\alpha)$ 
+    \begin{enumerate}[(a)]
+        \item Prove that $N_{K/F}(\alpha) \in F$
+
+        \item Prove that $N_{K/F}(\alpha\beta) = N_{K/F}(\alpha)N_{K/F}(\beta)$, so that the norm is a multiplicative map from $K$ to $F$
+
+        \item Let $K = F(\sqrt{D})$ be a quadratic extension of $F$. Show that $N_{K/F}(a + b\sqrt{D}) = a^2 - Db^2$
+
+        \item Let $m_{\alpha}(x) = x^d + \cdots + a_1x + a_0 \in F[x]$ be the minimal polynomial for $\alpha \in K$ over $F$. Let $n = [K:F]$. Prove that $d$ divides $n$, that there are $d$ distinct Galois conjugates of $\alpha$ which are all repeated $n/d$ times in the product above and conclude that $N_{K/F}(\alpha) = (-1)^na_0^{n/d}$
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item Let $\Omega = \{\sigma \mid \sigma H = H, H \leq \Gal(L/F)\}$ then $N_{K/F}(\alpha) = \prod_{\sigma \in \Omega} \sigma(\alpha)$. Showing that $N_{K/F}(\alpha) \in F$ is analogous to showing that any $\tau \in \Gal(L/F)$ fixes $N_{K/F}(\alpha)$ as $F$ is the fixed field of $\Gal(L/F)$.
+        
+        Now, let $\tau \in \Gal(L/F)$ we then have
+        \[\tau(N_{K/F}(\alpha)) = \tau(\prod_{\sigma \in \Omega} \sigma(\alpha)) = \prod_{\sigma \in \Omega} \tau(\sigma(\alpha))\]
+        We can now notice that if $\tau\sigma_1$ is in the same coset as $\tau\sigma_2$ then $\tau\sigma_1 = \tau\sigma_1h, h \in H$ which implies that $\sigma_1$ is in the same coset as $\sigma_2$, therefore $\{\sigma \mid \sigma H = H\} = \{\tau\sigma \mid \tau\sigma H = H\} = \Omega$. Hence we can simplify
+        \[\tau(N_{K/F}(\alpha)) = \prod_{\sigma \in \Omega} \tau(\sigma(\alpha)) =  \prod_{\sigma \in \Omega} \sigma(\alpha) = N_{K/F}(\alpha)\]
+        We have now shown that $N_{K/F}(\alpha)$ is fixed by arbitrary $\tau \in \Gal(L/F)$
+
+        \item $\sigma$ is a homomorphism (remember that an embedding is just an injective homomorphism) and therefore 
+        \[N_{K/F}(\alpha\beta) = \prod_{\sigma}\sigma(\alpha\beta) = \prod_{\sigma}\sigma(\alpha)\sigma(\beta) = N_{K/F}(\alpha)N_{K/F}(\beta)\]
+
+        \item If $K = F(\sqrt{D})$ is a quadratic extension then we have 2 embeddings. Namely, $\sigma, \tau$ where $\sigma$ is identity and $\tau$ which fixes $F$ and maps $\sqrt{D} \mapsto -\sqrt{D}$, hence
+        \[N_{K/F}(a+\sqrt{D}) = \sigma(a + b\sqrt{D})\tau(a + b\sqrt{D}) = (a + b\sqrt{D})(a - b\sqrt{D}) = a^2 - b^2D\]
+
+        \item $m_{\alpha}(x)$ has degree $d$ and therefore $[F(\alpha):F] = d$ which divides $[K:F] = n$. Let $m_{\alpha}(x)=x^{d}+a_{d-1}x^{d-1}+\dots+a_{0}$, where $a_{i}\in F$. Consider $H=\{\sigma\in G\mid\sigma(\alpha)=\alpha\}$ and notice that it is a subgroup of $G$. For any $\sigma\in G$, it must be that $\sigma:\alpha\mapsto\alpha_{i}$, where $\alpha_{1}=\alpha,\dots,\alpha_{d}$ are the roots of $m_{\alpha}(x)$. Since $K/F$ is Galois, then any irreducible polynomial over $F$ is separable, and thus we can conclude that the $\alpha_{i}$'s are distinct.
+
+        Now consider $G$ acting on $K$ in the obvious way (That is $\sigma \cdot \alpha = \sigma(\alpha)$). Then notice that $H=\text{Stab}(\alpha)$, and by orbit-stabiliser theorem, we have
+        \begin{align*}
+            |G|&=|H||\mathcal{O}(\alpha)|\\
+            n&=|H|(d)\quad\text{there are $d$ distinct roots}\\
+            |H|&=\frac{n}{d}
+        \end{align*}
+        Then
+        \begin{align*}
+            N_{K/F}(\alpha)&=\prod_{\sigma\in G}\sigma(\alpha)\\
+            &=\prod_{i=1}^{d}\prod_{\tau\in H}(\sigma_{i}\tau)(\alpha)\\
+            &=\prod_{i=1}^{d}\left(\sigma_{i}(\alpha)\right)^{\frac{n}{d}}\quad\tau(\alpha)=\alpha,\,\forall\tau\in H\\
+            &=\prod_{i=1}^{d}\alpha_{i}^{\frac{n}{d}}
+        \end{align*}
+        Since $a_{0}=(-1)^{d}\prod_{i=1}^{d}\alpha_{i}$, then it follows that $N_{K/F}(\alpha)=\left(\prod_{i=1}^{d}\alpha_{i}\right)^{\frac{n}{d}}=\left((-1)^{d}a_{0}\right)^{\frac{n}{d}}=(-1)^{n}a_{0}^{\frac{n}{d}}$ as desired.
+    \end{enumerate}
+\end{solution}
